@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block tile %}add_user_v2{% endblock %}
+
+{% block content %}
+<h3> you have added user with data: </h3>
+{{% user.name %}}
+{{% user.ln %}}
+{{% user.age %}}
+{% endblock %}
