@@ -1,6 +1,6 @@
 import csv
 import datetime
-import os
+import os.path
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -14,24 +14,24 @@ def get_data(request):
     return HttpResponse(data)
 
 
-def two_pow(request, number):
-    result = 2 ** int(number)
-    return HttpResponse(f'2 ** {number} = {result}')
+def two_pow(request, number, power):
+    result = int(number) ** power
+    return HttpResponse(f'{number} ** {power} = {result}')
 
 
 def hello_admin(request):
-    return HttpResponse('Hello, admin!')
+    return HttpResponse('hello admin')
 
 
 def hello_guest(request, name):
-    return HttpResponse(f'Hello, {name}!')
+    return HttpResponse(f'hello {name}')
 
 
 def hello_user(request, user):
     if user == 'admin':
-        return redirect('hello_admin')
+        return redirect('admin')
     else:
-        return redirect('hello_guest', guest=user)
+        return redirect('hello_guest123', name=user)
 
 
 def my_word(request, word):
@@ -42,15 +42,15 @@ def my_word(request, word):
 
 
 def login(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         pass
     else:
-        name_2 = request.GET.get('name')
-        return redirect('success', name=name_2)
+        name2 = request.GET.get('name1')
+        return redirect('success', name10=name2)
 
 
-def success(request, name):
-    return HttpResponse(f'Welcome, {name}')
+def success(request, name10):
+    return HttpResponse("hello" + name10)
 
 
 def add_user(request):
@@ -58,7 +58,7 @@ def add_user(request):
         with open('users.csv', 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['name', 'lastname', 'age'])
-    if request.method == 'POST':
+    if request.method == "POST":
         name = request.POST.get('name')
         lastname = request.POST.get('lastname')
         age = request.POST.get('age')
@@ -67,15 +67,16 @@ def add_user(request):
             writer.writerow([name, lastname, age])
         return HttpResponse(f'name - {name}, lastname - {lastname}, age - {age}')
     else:
-        template = loader.get_template('form.html')
+        template = loader.get_template('django_05.html')
         response = template.render({}, request)
         return HttpResponse(response)
 
 
 def add_user_v2(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
+
             data = form.cleaned_data
 
             name = data.get('name')
@@ -89,6 +90,7 @@ def add_user_v2(request):
             return render(request, 'django_06_display.html', content)
         else:
             errors = form.errors
-            return HttpResponse(f'error - {errors}')
+            return HttpResponse(f'errors - {errors}')
     else:
-        return render(request, 'django_06_form.html', {'form': UserForm()})
+        content = {'form': UserForm()}
+        return render(request, 'django_06_form.html', content)

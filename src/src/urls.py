@@ -21,6 +21,6 @@ from app_1.views import get_data, two_pow, hello_admin, hello_guest, hello_user,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app_1/', include('app_1.urls')),
+    path('app1/', include('app1.urls')),
 
 ]
