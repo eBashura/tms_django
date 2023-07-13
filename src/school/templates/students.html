@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "main.html" %}
 
-</body>
-</html>
+{% block title %} show students {% endblock %}
+
+
+{% block content%}
+<h1>список студентов группы {{ group }}</h1>
+    {% for student in students%}
+        <h3>{{ student.firstname }} {{ student.lastname }} </h3>
+    {% endfor %}
+{% endblock %}

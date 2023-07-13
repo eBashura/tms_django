@@ -8,4 +8,4 @@ class Customer(models.Model):
     profession = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
-        return self.lastname
+        return f"{self.lastname} - {self.name}"

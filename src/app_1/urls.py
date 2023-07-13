@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app_1.views import get_data, two_pow, hello_admin, hello_guest, hello_user, my_word, success, login, add_user, \
+from app1.views import get_data, two_pow, hello_admin, hello_guest, hello_user, my_word, success, login, add_user, \
     add_user_v2
 
 urlpatterns = [

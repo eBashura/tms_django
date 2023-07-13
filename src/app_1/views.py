@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from app_1.forms import UserForm
+from app1.forms import UserForm
 
 
 def get_data(request):
