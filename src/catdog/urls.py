@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app1.views import get_data, two_pow, hello_admin, hello_guest, hello_user, my_word, success, login, add_user
-from catdog.views import catdog_view
+from catdog.views import catdog_view, save_catdog, send_email
 
 urlpatterns = [
     path('', catdog_view,
          name='catdog'),
-
+    path('save_catdog', save_catdog,
+         name='save_catdog'),
+    path('send_email', send_email,
+         name='send_email')
 ]

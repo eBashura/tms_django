@@ -6,8 +6,11 @@
 <H1>тут картинка</H1>
 <img src="{{url}}" class="rounded-circle" alt="Cinque Terre">
 
-<form action="{% url 'save_catdog'%}" method="post">
+<h2>image saved</h2>
+
+<form action="{% url 'send_mail'%}" method="post">
     {% csrf_token %}
-    <button type="submit" name="pet" class="btn btn-outline-warning">Save this image</button>
+    <h3>enter email where to send</h3>
+
 </form>
 {% endblock %}
