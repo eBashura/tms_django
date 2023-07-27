@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app1.views import get_data, two_pow, hello_admin, hello_guest, hello_user, my_word, success, login, add_user
-from catdog.views import catdog_view, save_catdog, send_email
+from catdog.views import catdog_view, save_catdog, send_email, pet_filter
 
 urlpatterns = [
     path('', catdog_view,
@@ -26,5 +26,7 @@ urlpatterns = [
     path('save_catdog', save_catdog,
          name='save_catdog'),
     path('send_email', send_email,
-         name='send_email')
+         name='send_mail123'),
+    path('pet_filter', pet_filter,
+         name='pet_filter')
 ]

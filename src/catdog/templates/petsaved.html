@@ -4,13 +4,15 @@
 
 {% block content%}
 <H1>тут картинка</H1>
-<img src="{{url}}" class="rounded-circle" alt="Cinque Terre">
+<img src="{{ url }}" class="rounded-circle" alt="Cinque Terre" height="200">
 
 <h2>image saved</h2>
 
-<form action="{% url 'send_mail'%}" method="post">
+<form action="{% url 'send_mail123'%}" method="post">
     {% csrf_token %}
     <h3>enter email where to send</h3>
+    <input type="email" name="mail">
+    <button type="submit" name="url" value="{{ url }}" class="btn btn-outline-warning">send mail</button>
 
 </form>
 {% endblock %}

@@ -3,12 +3,22 @@
 {% block title%} catdog {% endblock %}
 
 {% block content%}
+<div class="jumbotron text-center big">
 <form action="{% url 'catdog'%}" method="post">
-    <button type="submit" name="cat" class="btn btn-warning">i love cats</button>
+    {% csrf_token %}
+    <button type="submit" name="cat" class="btn btn-outline-warning">i love cats</button>
+    <button type="submit" name="dog" class="btn btn-outline-warning">i love dogs</button>
 </form>
 
-
-<form action="{% url 'catdog'%}" method="post">
-    <button type="submit" name="dog" class="btn btn-warning">i love dogs</button>
+<br>
+<form action="{% url 'pet_filter'%}" method="post">
+    {% csrf_token %}
+<!--    {{ form.as_p }}-->
+    {% for field in form %}
+        {{ field }}
+    {% endfor %}
+    <li></li>
+    <button type="submit" class="btn btn-outline-warning">show pets</button>
 </form>
+</div>
 {% endblock %}
